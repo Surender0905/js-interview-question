@@ -45,3 +45,19 @@ const deepFlatten3 = (arr) => {
 };
 
 console.log(deepFlatten3(arr));
+
+///flat array with levels
+
+function flatArray(arr, level) {
+    const result = [];
+
+    for (let item of arr) {
+        if (Array.isArray(item) && level > 0) {
+            result.push(...flatArray(item, level - 1));
+        } else {
+            result.push(item);
+        }
+    }
+
+    return result;
+}
